@@ -1,4 +1,7 @@
+import 'package:flexigadi/Screens/Customer/screen/Profile/components/contact.dart';
 import 'package:flexigadi/Screens/Driver/Screens/Profile/components/personal.dart';
+
+import '../components/personal.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 
@@ -30,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
                 child: Center(
                   child: ClipOval(
                     child: Image.asset(
-                      'assets/images/driver.jpg', // Replace with your image path
+                      'assets/images/User.jpg', // Replace with your image path
                       fit: BoxFit.cover,
                       width: screenWidth * 0.45,
                       height: screenWidth * 0.45,
@@ -43,6 +46,7 @@ class ProfileScreen extends StatelessWidget {
             _buildProfileOption(context, 'Personal Details', Icons.person),
             _buildProfileOption(
                 context, 'Terms & Conditions', Icons.assignment),
+            _buildProfileOption(context, 'Current Ride', Icons.taxi_alert),
             _buildProfileOption(context, 'Refer & Earn', Icons.share),
             _buildProfileOption(context, 'Contact Us', Icons.support_agent),
             _buildProfileOption(context, 'Settings', Icons.settings),
@@ -65,10 +69,18 @@ class ProfileScreen extends StatelessWidget {
             // Navigate to Personal Details screen
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DriverDetailsScreen()),
+              MaterialPageRoute(builder: (context) => UserDetailsScreen()),
             );
             break;
           case 'Terms & Conditions':
+            // Navigate to Terms & Conditions screen
+            break;
+          case 'Current Ride':
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DriverDetailsScreen()),
+            );
+
             // Navigate to Terms & Conditions screen
             break;
           case 'Refer & Earn':
@@ -76,6 +88,10 @@ class ProfileScreen extends StatelessWidget {
             break;
           case 'Contact Us':
             // Navigate to Settings screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ContactScreen()),
+            );
             break;
           case 'Settings':
             // Navigate to Settings screen

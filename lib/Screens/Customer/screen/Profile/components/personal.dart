@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../../../constants.dart';
 
-class DriverDetailsScreen extends StatelessWidget {
+class UserDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Driver Details'),
+        title: Text('Personal Details'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -19,7 +18,7 @@ class DriverDetailsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                height: screenWidth * 0.5,
+                height: screenWidth * 0.55,
                 decoration: BoxDecoration(
                   color: Color.fromARGB(255, 107, 105, 105),
                   shape: BoxShape.circle,
@@ -35,45 +34,17 @@ class DriverDetailsScreen extends StatelessWidget {
                 child: Center(
                   child: ClipOval(
                     child: Image.asset(
-                      'assets/images/driver_02.jpg', // Replace with your image path
+                      'assets/images/userprofile.jpg', // Replace with your image path
                       fit: BoxFit.cover,
-                      width: screenWidth * 0.45,
-                      height: screenWidth * 0.45,
+                      width: screenWidth * 0.5,
+                      height: screenWidth * 0.5,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: screenWidth * 0.05),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  BoxWidget(
-                    title: 'Completed',
-                    value: '100',
-                    icon: Icons.directions_car,
-                    backgroundColor: kPrimaryColor, // Example color
-                    textColor: Colors.white,
-                    // Example value
-                  ),
-                  BoxWidget(
-                    title: 'Ratings',
-                    value: '4.5',
-                    icon: Icons.star,
-                    backgroundColor: kPrimaryLightColor, // Example color
-                    textColor: Colors.white, // Example value
-                  ),
-                  BoxWidget(
-                    title: 'Verified',
-                    value: 'Yes',
-                    icon: Icons.check_circle,
-                    backgroundColor: Colors.green, // Example color
-                    textColor: Colors.white, // Example value
-                  ),
-                ],
-              ),
               SizedBox(height: screenWidth * 0.06),
               DetailsWidget(
-                title: 'Driver Name',
+                title: 'User Name',
                 value: 'Keyur Parmar', // Example value
               ),
               DetailsWidget(
@@ -85,20 +56,16 @@ class DriverDetailsScreen extends StatelessWidget {
                 value: '01-05-1998', // Example value
               ),
               DetailsWidget(
-                title: 'Aadhar Number',
-                value: '1234 5678 9012', // Example value
-              ),
-              DetailsWidget(
-                title: 'License Number',
-                value: 'ABCD123456', // Example value
+                title: 'Gender',
+                value: 'Male', // Example value
               ),
               DetailsWidget(
                 title: 'City',
                 value: 'Surat', // Example value
               ),
               DetailsWidget(
-                title: 'Cars',
-                value: 'Ertiga, Dzire, Innova', // Example value
+                title: 'Total Rides',
+                value: '100', // Example value
               ),
             ],
           ),

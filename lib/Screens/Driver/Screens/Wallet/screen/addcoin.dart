@@ -212,9 +212,9 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
             UpiResponse? response = await upiIndia.startTransaction(
               app: chosenApp,
               receiverName:
-                  'MAKWANA BHARGAVKUMAR NILESHBHAI', // Replace with actual receiver name
+                  'Mr. PARAS BHUPATBHAI PARMAR', // Replace with actual receiver name
               receiverUpiId:
-                  '9978863413@paytm', // Replace with actual receiver UPI ID
+                  '9723022844@okbizaxis', // Replace with actual receiver UPI ID
               transactionRefId:
                   'TestingUpiIndiaPlugin', // Replace with your transaction reference
               transactionNote:

@@ -1,9 +1,9 @@
 import 'package:flexigadi/Screens/Driver/Screens/Home/screens/homescreen.dart';
+import 'package:flexigadi/Screens/Driver/Screens/Requirement/components/addrequirement.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
-import '../../Available/screen/addavailable.dart';
 
 class Latest extends StatefulWidget {
   @override
@@ -78,7 +78,7 @@ class _LatestState extends State<Latest> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => AddAvailableScreen()),
+                        builder: (context) => AddRequirementdriverScreen()),
                   );
                 },
                 child: Container(
@@ -406,6 +406,35 @@ class MyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _showNotePopup(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Note"),
+            content: Text(
+              note,
+              style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Close",
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     // Implement your MyContainer UI here
     double screenWidth = MediaQuery.of(context).size.width;
     double smallfont = screenWidth * 0.03;
@@ -423,7 +452,7 @@ class MyContainer extends StatelessWidget {
           right: screenWidth * 0.04,
           top: screenWidth * 0.02,
           bottom: screenWidth * 0.02),
-      height: screenWidth * 0.55,
+      height: screenWidth * 0.57,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         color: kPrimaryColor, // Background color updated to black
@@ -517,7 +546,8 @@ class MyContainer extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(screenWidth * 0.01),
+                  padding: EdgeInsets.only(
+                      left: screenWidth * 0.01, top: screenWidth * 0.01),
                   child: Row(
                     children: [
                       Icon(
@@ -542,11 +572,30 @@ class MyContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text(
-                  note,
-                  style: TextStyle(
-                    fontSize: smallfont,
-                    color: Colors.grey[400], // Text color updated to grey[400]
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: screenWidth * 0.04), // Add padding here
+                  child: TextButton(
+                    onPressed: () {
+                      _showNotePopup(context);
+                    },
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.only(
+                            left: screenWidth * 0.01,
+                            top: screenWidth * 0.00005,
+                            bottom: screenWidth * 0.00005,
+                            right: screenWidth *
+                                0.01), // Adjust inner padding here
+                      ),
+                    ),
+                    child: Text(
+                      "View More",
+                      style: TextStyle(
+                        fontSize: mediumfont, // Set your desired font size
+                        color: kPrimaryLightColor,
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -645,7 +694,7 @@ class MyContainer extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(
                       left: screenWidth * 0.025,
-                      top: screenWidth * 0.01,
+                      top: screenWidth * 0.03,
                       bottom: screenWidth * 0.01),
                   child: Row(
                     children: [

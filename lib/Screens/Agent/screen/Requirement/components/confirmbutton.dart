@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 
-class AgentDetailsScreen extends StatelessWidget {
+class ConfirmdriverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agent Details'),
+        title: Text('Driver Details'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -35,7 +35,7 @@ class AgentDetailsScreen extends StatelessWidget {
                 child: Center(
                   child: ClipOval(
                     child: Image.asset(
-                      'assets/images/agentprofile.jpg', // Replace with your image path
+                      'assets/images/driver_02.jpg', // Replace with your image path
                       fit: BoxFit.cover,
                       width: screenWidth * 0.45,
                       height: screenWidth * 0.45,
@@ -73,7 +73,7 @@ class AgentDetailsScreen extends StatelessWidget {
               ),
               SizedBox(height: screenWidth * 0.06),
               DetailsWidget(
-                title: 'Agent Name',
+                title: 'Driver Name',
                 value: 'Keyur Parmar', // Example value
               ),
               DetailsWidget(
@@ -89,12 +89,67 @@ class AgentDetailsScreen extends StatelessWidget {
                 value: '1234 5678 9012', // Example value
               ),
               DetailsWidget(
+                title: 'License Number',
+                value: 'ABCD123456', // Example value
+              ),
+              DetailsWidget(
                 title: 'City',
                 value: 'Surat', // Example value
               ),
               DetailsWidget(
-                title: 'Gender',
-                value: 'Male', // Example value
+                title: 'Cars',
+                value: 'Ertiga, Dzire, Innova', // Example value
+              ),
+              SizedBox(height: screenWidth * 0.05), // Adjust as needed
+              Padding(
+                padding: EdgeInsets.only(
+                    left: screenWidth * 0.05,
+                    right: screenWidth * 0.05,
+                    bottom: screenWidth * 0.05,
+                    top: screenWidth * 0.02),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Show dialog or pop-up
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Center(child: Text('Confirmed!')),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset('assets/images/done.png',
+                                  height: screenWidth * 0.5),
+                              SizedBox(height: screenWidth * 0.04),
+                              Text('Your Ride has been placed !'),
+                              SizedBox(height: screenWidth * 0.02),
+                              Text('Go to Current Ride'),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                'OK',
+                                style: TextStyle(color: kPrimaryColor),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green, // Set color of the button
+                  ),
+                  child: Text(
+                    'Confirm Driver',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: screenWidth * 0.045),
+                  ),
+                ),
               ),
             ],
           ),

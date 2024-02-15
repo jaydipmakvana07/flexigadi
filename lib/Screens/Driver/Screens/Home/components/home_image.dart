@@ -1,3 +1,4 @@
+import 'package:flexigadi/Screens/Customer/screen/Profile/components/personal.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../../../../../constants.dart';
@@ -9,12 +10,12 @@ class HomeImage extends StatefulWidget {
 
 class _HomeImageState extends State<HomeImage> {
   final List<String> _imageUrls = [
-         'https://picsum.photos/id/1022/536/354',
-          'https://picsum.photos/id/1023/536/354',
-          'https://picsum.photos/id/1024/536/354',
-          'https://picsum.photos/id/1025/536/354',
-          'https://picsum.photos/id/1026/536/354',
-      ];
+    'https://picsum.photos/id/1022/536/354',
+    'https://picsum.photos/id/1023/536/354',
+    'https://picsum.photos/id/1024/536/354',
+    'https://picsum.photos/id/1025/536/354',
+    'https://picsum.photos/id/1026/536/354',
+  ];
 
   int _currentIndex = 0;
 
@@ -40,8 +41,8 @@ class _HomeImageState extends State<HomeImage> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.all(screenSize.width*0.05),
-              padding: EdgeInsets.all(screenSize.width*0.02),
+              margin: EdgeInsets.all(screenSize.width * 0.05),
+              padding: EdgeInsets.all(screenSize.width * 0.02),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16.0),
@@ -60,7 +61,8 @@ class _HomeImageState extends State<HomeImage> {
                   height: imageHeight,
                   viewportFraction: 1.0,
                   autoPlay: true, // Enable automatic sliding
-                  autoPlayInterval: Duration(seconds: 2), // Set the interval duration
+                  autoPlayInterval:
+                      Duration(seconds: 2), // Set the interval duration
                   onPageChanged: (index, reason) {
                     setState(() {
                       _currentIndex = index;
@@ -69,7 +71,9 @@ class _HomeImageState extends State<HomeImage> {
                 ),
                 itemBuilder: (context, index, realIndex) {
                   return Padding(
-                    padding: EdgeInsets.symmetric(vertical: screenSize.height*0.005, horizontal: screenSize.width*0.01),
+                    padding: EdgeInsets.symmetric(
+                        vertical: screenSize.height * 0.005,
+                        horizontal: screenSize.width * 0.01),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.network(
@@ -91,16 +95,44 @@ class _HomeImageState extends State<HomeImage> {
                     });
                   },
                   child: Container(
-                    width: screenSize.width*0.02,
-                    height: screenSize.height*0.02,
-                    margin: EdgeInsets.symmetric(vertical: screenSize.height*0.005, horizontal: screenSize.width*0.01),
+                    width: screenSize.width * 0.02,
+                    height: screenSize.height * 0.02,
+                    margin: EdgeInsets.symmetric(
+                        vertical: screenSize.height * 0.005,
+                        horizontal: screenSize.width * 0.01),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: _currentIndex == entry.key ?  kPrimaryLightColor : lightBlack,
+                      color: _currentIndex == entry.key
+                          ? kPrimaryLightColor
+                          : lightBlack,
                     ),
                   ),
                 );
               }).toList(),
+            ),
+            SizedBox(
+                height: screenSize.width * 0.2), // Adjust the spacing as needed
+            Container(
+              height: screenSize.width * 0.2,
+              padding: EdgeInsets.all(screenSize.width * 0.025),
+              margin: EdgeInsets.only(
+                  left: screenSize.width * 0.1, right: screenSize.width * 0.1),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UserDetailsScreen()),
+                  ); // Add your button onPressed logic here
+                },
+                child: Text(
+                  'Your Current Customer',
+                  style: TextStyle(
+                    fontSize: screenSize.width * 0.045,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
           ],
         ),

@@ -166,7 +166,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                 onPressed: () {
                   _proceedWithPayment();
                 },
-                child: Text('Next'),
+                child: Text('NEXT'),
               ),
             ],
           ),

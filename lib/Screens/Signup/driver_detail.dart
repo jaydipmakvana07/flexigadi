@@ -64,7 +64,8 @@ class _DriverDetailsFormState extends State<DriverDetailsForm> {
       body: KeyboardDismisser(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 35, right: 35, top: 35),
+            padding:
+                const EdgeInsets.only(left: 35, right: 35, top: 35, bottom: 35),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

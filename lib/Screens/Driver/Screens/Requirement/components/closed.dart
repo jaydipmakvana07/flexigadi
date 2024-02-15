@@ -371,6 +371,35 @@ class MyContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Implement your MyContainer UI here
+    void _showNotePopup(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Note"),
+            content: Text(
+              note,
+              style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Close",
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     double screenWidth = MediaQuery.of(context).size.width;
     double smallfont = screenWidth * 0.03;
     double smallicon = screenWidth * 0.05;
@@ -520,12 +549,30 @@ class MyContainer extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Text(
-                      note,
-                      style: TextStyle(
-                        fontSize: smallfont,
-                        color:
-                            Colors.grey[400], // Text color updated to grey[400]
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: screenWidth * 0.04), // Add padding here
+                      child: TextButton(
+                        onPressed: () {
+                          _showNotePopup(context);
+                        },
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.only(
+                                left: screenWidth * 0.01,
+                                top: screenWidth * 0.00005,
+                                bottom: screenWidth * 0.00005,
+                                right: screenWidth *
+                                    0.01), // Adjust inner padding here
+                          ),
+                        ),
+                        child: Text(
+                          "View More",
+                          style: TextStyle(
+                            fontSize: mediumfont, // Set your desired font size
+                            color: closedgreen,
+                          ),
+                        ),
                       ),
                     ),
                   ],

@@ -1,3 +1,4 @@
+import 'package:flexigadi/Screens/Customer/screen/Profile/components/contact.dart';
 import 'package:flexigadi/Screens/Driver/Screens/Profile/components/personal.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
@@ -70,12 +71,17 @@ class ProfileScreen extends StatelessWidget {
             break;
           case 'Terms & Conditions':
             // Navigate to Terms & Conditions screen
+
             break;
           case 'Refer & Earn':
             // Navigate to Refer & Earn screen
             break;
           case 'Contact Us':
             // Navigate to Settings screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ContactScreen()),
+            );
             break;
           case 'Settings':
             // Navigate to Settings screen

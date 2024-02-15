@@ -1,4 +1,4 @@
-import 'package:flexigadi/Screens/Driver/Screens/Home/screens/homescreen.dart';
+import 'package:flexigadi/Screens/Agent/screen/Requirement/components/activechatbox.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -93,7 +93,7 @@ class _LatestState extends State<Active> {
                         ),
                         SizedBox(height: screenHeight * 0.02),
                         Text(
-                          'No Active Requirement',
+                          'No Latest Requirement',
                           style: TextStyle(
                             fontSize: screenHeight * 0.025,
                             color: Colors.black,
@@ -166,7 +166,7 @@ class _LatestState extends State<Active> {
                       ],
                       textChanged: (text) {},
                       clearOnSubmit: false,
-                      cursorColor: kPrimaryLightColor,
+                      cursorColor: activered,
                       textSubmitted: (text) {
                         setState(() {
                           selectedCityFrom = text; // Update selected city
@@ -185,8 +185,7 @@ class _LatestState extends State<Active> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                              color:
-                                  kPrimaryLightColor), // Focused border color
+                              color: activered), // Focused border color
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -211,7 +210,7 @@ class _LatestState extends State<Active> {
                       ],
                       textChanged: (text) {},
                       clearOnSubmit: false,
-                      cursorColor: kPrimaryLightColor,
+                      cursorColor: activered,
                       textSubmitted: (text) {
                         setState(() {
                           selectedCityTo = text; // Update selected city
@@ -230,8 +229,7 @@ class _LatestState extends State<Active> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                              color:
-                                  kPrimaryLightColor), // Focused border color
+                              color: activered), // Focused border color
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -249,7 +247,7 @@ class _LatestState extends State<Active> {
                       suggestions: ["Sedan", "Xuv", "Suv"],
                       textChanged: (text) {},
                       clearOnSubmit: false,
-                      cursorColor: kPrimaryLightColor,
+                      cursorColor: activered,
                       style: TextStyle(color: Colors.white),
                       textSubmitted: (text) {
                         setState(() {
@@ -272,8 +270,7 @@ class _LatestState extends State<Active> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                              color:
-                                  kPrimaryLightColor), // Focused border color
+                              color: activered), // Focused border color
                         ),
                         prefixIcon: Icon(Icons.directions_car_filled,
                             color: Colors.white),
@@ -367,6 +364,35 @@ class MyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _showNotePopup(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Note"),
+            content: Text(
+              note,
+              style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Close",
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     // Implement your MyContainer UI here
     double screenWidth = MediaQuery.of(context).size.width;
     double smallfont = screenWidth * 0.03;
@@ -384,7 +410,7 @@ class MyContainer extends StatelessWidget {
           right: screenWidth * 0.04,
           top: screenWidth * 0.02,
           bottom: screenWidth * 0.02),
-      height: screenWidth * 0.55,
+      height: screenWidth * 0.57,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         color: kPrimaryColor, // Background color updated to black
@@ -478,7 +504,8 @@ class MyContainer extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(screenWidth * 0.01),
+                  padding: EdgeInsets.only(
+                      left: screenWidth * 0.01, top: screenWidth * 0.01),
                   child: Row(
                     children: [
                       Icon(
@@ -503,11 +530,30 @@ class MyContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text(
-                  note,
-                  style: TextStyle(
-                    fontSize: smallfont,
-                    color: Colors.grey[400], // Text color updated to grey[400]
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: screenWidth * 0.04), // Add padding here
+                  child: TextButton(
+                    onPressed: () {
+                      _showNotePopup(context);
+                    },
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.only(
+                            left: screenWidth * 0.01,
+                            top: screenWidth * 0.00005,
+                            bottom: screenWidth * 0.00005,
+                            right: screenWidth *
+                                0.01), // Adjust inner padding here
+                      ),
+                    ),
+                    child: Text(
+                      "View More",
+                      style: TextStyle(
+                        fontSize: mediumfont, // Set your desired font size
+                        color: activered,
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -606,7 +652,7 @@ class MyContainer extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(
                       left: screenWidth * 0.025,
-                      top: screenWidth * 0.01,
+                      top: screenWidth * 0.03,
                       bottom: screenWidth * 0.01),
                   child: Row(
                     children: [
@@ -647,8 +693,7 @@ class MyContainer extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => HomedriverScreen()),
+                        MaterialPageRoute(builder: (context) => GroupChatApp()),
                       );
                     },
                     child: Padding(

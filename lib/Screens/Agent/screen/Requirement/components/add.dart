@@ -345,6 +345,7 @@ class _CabBookingFormState extends State<CabBookingForm> {
                       controller: noteController,
                       focusNode: noteFocusNode,
                       cursorColor: kPrimaryLightColor,
+                      maxLines: null,
                       decoration: InputDecoration(
                         labelText: 'Note',
                         fillColor: Colors.white,
